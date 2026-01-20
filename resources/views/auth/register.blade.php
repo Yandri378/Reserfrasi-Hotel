@@ -12,7 +12,7 @@
     
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #dab006 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -34,7 +34,7 @@
         }
         
         .register-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #c48208 0%, #764ba2 100%);
             color: white;
             padding: 40px 20px;
             text-align: center;
@@ -66,7 +66,7 @@
         }
         
         .form-control {
-            border: 2px solid #e0e0e0;
+            border: 2px solid #14e6c3;
             border-radius: 8px;
             padding: 12px 15px;
             font-size: 14px;
@@ -86,7 +86,7 @@
         }
         
         .btn-register {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e59109 0%, #000000 100%);
             border: none;
             padding: 12px 20px;
             font-weight: 600;
@@ -105,7 +105,7 @@
         .login-link {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid #1b1101;
             margin-top: 20px;
         }
         
@@ -133,7 +133,7 @@
         
         .input-group-text {
             background: white;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #000000;
             color: #667eea;
         }
         

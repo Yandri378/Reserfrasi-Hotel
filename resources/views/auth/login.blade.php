@@ -12,12 +12,20 @@
     
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e7c506 0%, #000000 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Animated gradient background */
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
         
         .login-container {
@@ -30,19 +38,85 @@
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            animation: fadeInDown 1.1s cubic-bezier(.68,-0.55,.27,1.55);
+            transition: box-shadow 0.4s, transform 0.4s;
+        }
+        
+        .login-card:hover {
+            box-shadow: 0 16px 48px #FFD70055, 0 2px 8px #764ba244;
+            transform: scale(1.025) rotate(-1deg);
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px);}
+            to { opacity: 1; transform: translateY(0);}
         }
         
         .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #dcab09 100%);
             color: white;
             padding: 40px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-header .login-icon {
+            font-size: 54px;
+            margin-bottom: 15px;
+            display: inline-block;
+            /* Multiple animations: popIn, spin, float, glowPulse */
+            animation: popIn 1.2s cubic-bezier(.68,-0.55,.27,1.55), 
+                       hotelSpin 8s linear infinite, 
+                       hotelFloat 3s ease-in-out infinite alternate,
+                       glowPulse 2.5s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 12px rgba(224, 143, 143, 0.47));
+            transition: transform 0.3s;
+        }
+        
+        .login-header .login-icon:hover {
+            animation: bounce 0.7s, 
+                       hotelSpin 8s linear infinite, 
+                       hotelFloat 3s ease-in-out infinite alternate,
+                       glowPulse 2.5s ease-in-out infinite alternate;
+            transform: scale(1.15) rotate(-10deg);
+        }
+        
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7);}
+            80% { opacity: 1; transform: scale(1.08);}
+            100% { opacity: 1; transform: scale(1);}
+        }
+        @keyframes hotelSpin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        @keyframes hotelFloat {
+            0% { transform: translateY(0);}
+            100% { transform: translateY(-16px);}
+        }
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 16px #FFD70088, 0 0 32px #fff3, 0 0 32px #FFD700, 0 0 64px #FFD70044;}
+            100% { text-shadow: 0 0 32px #FFD700cc, 0 0 64px #fff7, 0 0 64px #FFD700, 0 0 128px #FFD70088;}
+        }
+        @keyframes bounce {
+            0%   { transform: scale(1) translateY(0);}
+            30%  { transform: scale(1.2, 0.8) translateY(-10px);}
+            50%  { transform: scale(0.95, 1.05) translateY(0);}
+            70%  { transform: scale(1.05, 0.95) translateY(-5px);}
+            100% { transform: scale(1) translateY(0);}
+        }
+        
+        .login-header .login-icon-glow {
+            color: #FFD700;
+            /* text-shadow handled by glowPulse animation */
         }
         
         .login-header h2 {
             margin: 0;
             font-weight: 700;
             font-size: 28px;
+            letter-spacing: 1px;
         }
         
         .login-header p {
@@ -51,13 +125,14 @@
             font-size: 14px;
         }
         
-        .login-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-        
         .login-body {
             padding: 40px;
+            animation: fadeIn 1.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0;}
+            to { opacity: 1;}
         }
         
         .form-group {
@@ -73,7 +148,7 @@
         }
         
         .form-control:focus {
-            border-color: #667eea;
+            border-color: #deab06;
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
         
@@ -85,7 +160,7 @@
         }
         
         .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFD700 0%, #764ba2 100%);
             border: none;
             padding: 12px 20px;
             font-weight: 600;
@@ -93,12 +168,48 @@
             transition: all 0.3s;
             width: 100%;
             color: white;
+            box-shadow: 0 2px 8px #FFD70033;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login::before {
+            content: "";
+            position: absolute;
+            left: -75%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255,215,0,0.15), rgba(255,255,255,0.05));
+            transform: skewX(-20deg);
+            transition: left 0.5s;
+            z-index: 0;
+        }
+        
+        .btn-login:hover::before {
+            left: 120%;
         }
         
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-            color: white;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 10px 20px #FFD70099, 0 0 16px #764ba244;
+            color: #232526;
+            background: linear-gradient(135deg, #764ba2 0%, #FFD700 100%);
+        }
+        
+        .show-password-btn {
+            border: none;
+            background: none;
+            color: #764ba2;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 0 8px;
+            transition: color 0.2s;
+        }
+        
+        .show-password-btn:hover {
+            color: #FFD700;
         }
         
         .forgot-password {
@@ -115,30 +226,6 @@
         
         .forgot-password a:hover {
             text-decoration: underline;
-        }
-        
-        .divider {
-            text-align: center;
-            margin: 25px 0;
-            position: relative;
-        }
-        
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #e0e0e0;
-        }
-        
-        .divider span {
-            background: white;
-            padding: 0 10px;
-            color: #999;
-            font-size: 13px;
-            position: relative;
         }
         
         .register-link {
@@ -179,6 +266,11 @@
         .input-group .form-control:focus ~ .input-group-text {
             border-color: #667eea;
         }
+        
+        /* Animated border on focus */
+        .form-control:focus, .input-group:focus-within {
+            box-shadow: 0 0 0 2px #FFD70055;
+        }
     </style>
 </head>
 <body>
@@ -186,7 +278,7 @@
         <div class="login-card">
             <!-- Header -->
             <div class="login-header">
-                <div class="login-icon">
+                <div class="login-icon login-icon-glow">
                     <i class="fas fa-hotel"></i>
                 </div>
                 <h2>Hotel Reservation</h2>
@@ -204,7 +296,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('authenticate') }}" method="POST">
+                <form action="{{ route('authenticate') }}" method="POST" autocomplete="off">
                     @csrf
 
                     <!-- Email -->
@@ -232,6 +324,9 @@
                             <span class="input-group-text">
                                 <i class="fas fa-lock"></i>
                             </span>
+                            <button type="button" class="show-password-btn" tabindex="-1" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                            </button>
                         </div>
                         @error('password')
                             <small class="text-danger">{{ $message }}</small>
@@ -274,5 +369,21 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show/hide password
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('togglePasswordIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </body>
 </html>

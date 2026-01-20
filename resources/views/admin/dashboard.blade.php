@@ -3,10 +3,47 @@
 @section('title', 'Admin Dashboard')
 
 @section('content')
-<h1 class="mb-4">👨‍💼 Admin Dashboard - Manajemen Reservasi</h1>
+<style>
+    .fade-in {
+        animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+    .card {
+        border-radius: 18px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+        border: 1px solid rgba(255, 215, 0, 0.08);
+        transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .card:hover {
+        box-shadow: 0 12px 40px 0 rgba(255, 215, 0, 0.18);
+        transform: scale(1.02);
+    }
+    .card-header {
+        background: linear-gradient(90deg, #232526 60%, #FFD700 100%);
+        color: #fff;
+        border-radius: 18px 18px 0 0;
+        border-bottom: 1px solid #FFD700;
+    }
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.18);
+    }
+</style>
+<h1 class="mb-4 fade-in">
+    <i class="fas fa-user-shield text-warning me-2"></i>
+    <span style="color:#FFD700;">Admin Dashboard - Manajemen Reservasi</span>
+</h1>
 
 <!-- Statistics -->
-<div class="row mb-4">
+<div class="row mb-4 fade-in">
     <div class="col-md-3">
         <div class="card text-center">
             <div class="card-body">
@@ -18,7 +55,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3">
         <div class="card text-center">
             <div class="card-body">
@@ -30,7 +66,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3">
         <div class="card text-center">
             <div class="card-body">
@@ -42,7 +77,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3">
         <div class="card text-center">
             <div class="card-body">
@@ -57,11 +91,11 @@
 </div>
 
 <!-- Pending Reservasi -->
-<div class="row">
+<div class="row fade-in">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">⏳ Reservasi Menunggu Persetujuan</h5>
+                <h5 class="mb-0"><i class="fas fa-hourglass-half text-warning me-2"></i>Reservasi Menunggu Persetujuan</h5>
             </div>
             <div class="card-body">
                 @if($reservasiPending->count() > 0)
@@ -110,11 +144,11 @@
 </div>
 
 <!-- Quick Actions -->
-<div class="row mt-4">
+<div class="row mt-4 fade-in">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">⚡ Akses Cepat</h5>
+                <h5 class="mb-0"><i class="fas fa-bolt text-warning me-2"></i>Akses Cepat</h5>
             </div>
             <div class="card-body">
                 <div class="row">

@@ -13,58 +13,99 @@
     <style>
         body {
             background-color: #f5f5f5;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
         }
-        
         .navbar {
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            background: linear-gradient(90deg, #232526 60%, #FFD700 100%) !important;
+            border-bottom: 2px solid #FFD700;
+            animation: fadeInDown 0.8s;
         }
-        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #FFD700 !important;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #23252644;
+        }
+        .navbar-nav .nav-link, .navbar-nav .dropdown-toggle {
+            color: #FFD700 !important;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link:hover, .navbar-nav .dropdown-toggle:hover {
+            color: #fff !important;
+        }
         .sidebar {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #232526 60%, #FFD700 100%);
             color: white;
             min-height: calc(100vh - 56px);
             padding-top: 20px;
+            box-shadow: 2px 0 16px 0 rgba(31, 38, 135, 0.08);
+            animation: fadeInLeft 1s;
         }
-        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px);}
+            to { opacity: 1; transform: translateX(0);}
+        }
         .sidebar a {
             color: #ecf0f1;
             text-decoration: none;
-            padding: 10px 20px;
-            display: block;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
             border-left: 3px solid transparent;
-            transition: all 0.3s;
+            transition: all 0.3s, background 0.2s;
+            font-size: 1.08rem;
+            border-radius: 0 20px 20px 0;
+            margin-bottom: 2px;
         }
-        
+        .sidebar a i {
+            margin-right: 12px;
+            font-size: 1.15em;
+        }
         .sidebar a:hover,
         .sidebar a.active {
-            background-color: #34495e;
-            border-left-color: #3498db;
-            color: #fff;
+            background: linear-gradient(90deg, #FFD70033 60%, #232526 100%);
+            border-left-color: #FFD700;
+            color: #FFD700 !important;
+            transform: scale(1.03);
         }
-        
         .sidebar .section-title {
-            color: #95a5a6;
+            color: #FFD700;
             font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
-            padding: 15px 20px 10px;
+            padding: 15px 24px 10px;
             margin-top: 15px;
+            letter-spacing: 1px;
         }
-        
         .content-area {
             background-color: #f5f5f5;
             min-height: calc(100vh - 56px);
         }
-        
         .card {
             border: none;
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border-radius: 18px;
         }
-        
         .card-header {
-            background-color: #3498db;
+            background: linear-gradient(90deg, #232526 60%, #FFD700 100%);
             color: white;
             border: none;
+            border-radius: 18px 18px 0 0;
+        }
+        .dropdown-menu {
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+        }
+        .dropdown-item:active {
+            background: linear-gradient(90deg, #FFD700 60%, #232526 100%);
+            color: #232526;
         }
     </style>
     
@@ -72,10 +113,10 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-hotel"></i> Hotel Reservation
+                <i class="fas fa-hotel me-2"></i> <span style="color:#FFD700;">Hotel Reservation</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
